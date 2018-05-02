@@ -1,0 +1,98 @@
+entity Bank {
+	name String required,
+    code String required,
+    addressLine1 String,
+    addressLine2 String,
+    mobileNumber String,
+    phoneNumber String,
+    email String
+}
+
+entity Branch {
+	name String required,
+    code String required,
+    addressLine1 String,
+    addressLine2 String,
+    mobileNumber String,
+    phoneNumber String,
+    email String
+}
+
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity AtmInformation {
+	name String required,
+    code String required,
+    model String,
+    status Status
+}
+
+
+entity Company {
+	name String required,
+    address String
+}
+
+entity Office {
+	name String required,
+    address String
+}
+
+
+
+entity UserInformation {
+	userId String,
+    userName String,
+    email String,
+    phone String,
+    password String,
+    status Status
+
+}
+
+enum Status {
+    ACTIVE, INACTIVE, CLOSE
+}
+
+    
+
+relationship ManyToOne {
+	UserInformation{office} to Office
+}
+relationship ManyToOne {
+	Office{company} to Company
+}
+relationship ManyToOne {
+	Branch{bank} to Bank
+}
+
+relationship OneToMany{
+	AtmInformation{office} to Office
+}
+
+relationship OneToMany{
+	Bank{branch} to Branch
+}
+relationship ManyToOne {
+	AtmInformation{location} to Location
+}
+
+relationship ManyToOne {
+	AtmInformation{branch} to Branch
+}
+
+
+// Set pagination options
+paginate Bank, Branch, AtmInformation, UserInformation, Office, CashIssue, CashReceive, CashLoad with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with mySuffix
