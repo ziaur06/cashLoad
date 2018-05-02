@@ -95,6 +95,18 @@ entity CashBalance {
     n500 BigDecimal,
     n1000 BigDecimal
 }
+entity CashLoad {
+	loadingDate LocalDate,
+    amount BigDecimal,
+    l100 BigDecimal,
+    l500 BigDecimal,
+    l1000 BigDecimal,
+    tag String
+}
+
+relationship ManyToOne {
+	CashLoad{atm} to AtmInformation
+}
 relationship ManyToOne {
  CashBalance{office} to Office
 }
@@ -131,7 +143,7 @@ relationship ManyToOne {
 
 
 // Set pagination options
-paginate Bank, Branch, AtmInformation, UserInformation, Office, CashReceive, CashIssue with pagination
+paginate Bank, Branch, AtmInformation, UserInformation, Office, CashReceive, CashIssue, CashLoad with pagination
 
 dto * with mapstruct
 

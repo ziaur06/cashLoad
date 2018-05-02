@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "atm",
+            "otherEntityName": "atmInformation",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "loadingDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "l100",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "l500",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "l1000",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "tag",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180502082246",
+    "entityTableName": "cash_load",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix",
+    "microserviceName": "cashload"
+}
