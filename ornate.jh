@@ -59,7 +59,37 @@ enum Status {
     ACTIVE, INACTIVE, CLOSE
 }
 
-    
+
+entity CashReceive {
+	receiveDate LocalDate required,
+    amount BigDecimal required,
+    userId String,
+    remarks String,
+    invoiceNumber String required,
+    tag String,
+    r100 BigDecimal,
+    r500 BigDecimal,
+    r1000 BigDecimal,
+    recjectedAmount BigDecimal,
+    f100 BigDecimal,
+    f500 BigDecimal,
+    f1000 BigDecimal,
+    tip String
+}
+
+entity CashIssue {
+	issueDate Date required,
+    amount BigDecimal required,
+    i100 BigDecimal,
+    i500 BigDecimal,
+    i1000 BigDecimal,
+    tip String,
+    invoiceNumber String,
+    tag String,
+    userId String,
+    remarks String
+}
+
 
 relationship ManyToOne {
 	UserInformation{office} to Office
