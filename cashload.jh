@@ -1,0 +1,163 @@
+entity Bank {
+	name String required,
+    code String required,
+    addressLine1 String,
+    addressLine2 String,
+    mobileNumber String,
+    phoneNumber String,
+    email String
+}
+
+entity Branch {
+	name String required,
+    code String required,
+    addressLine1 String,
+    addressLine2 String,
+    mobileNumber String,
+    phoneNumber String,
+    email String
+}
+
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity AtmInformation {
+	name String required,
+    code String required,
+    model String,
+    status Status
+}
+
+
+entity Company {
+	name String,
+    address String
+}
+
+entity Office {
+	name String,
+    address String
+}
+
+entity CashReceive {
+	receiveDate LocalDate,
+    amount BigDecimal,
+    userId String,
+    remarks String,
+    invoiceNumber String,
+    tag String,
+    r100 BigDecimal,
+    r500 BigDecimal,
+    r1000 BigDecimal,
+    recjectedAmount BigDecimal,
+    f100 BigDecimal,
+    f500 BigDecimal,
+    f1000 BigDecimal,
+    tip String
+}
+
+entity CashIssue {
+	issueDate Date,
+    amount BigDecimal,
+    i100 BigDecimal,
+    i500 BigDecimal,
+    i1000 BigDecimal,
+    tip String,
+    invoiceNumber String,
+    tag String,
+    userId String,
+    remarks String
+}
+
+entity CashBalance {
+	balance BigDecimal,
+    n100 BigDecimal,
+    n500 BigDecimal,
+    n1000 BigDecimal
+}
+
+entity CashLoad {
+	loadingDate LocalDate,
+    amount BigDecimal,
+    l100 BigDecimal,
+    l500 BigDecimal,
+    l1000 BigDecimal,
+    tag String
+}
+relationship ManyToOne {
+	CashLoad{atm} to AtmInformation
+}
+
+relationship OneToOne {
+	CashBalance{office} to Office
+}
+
+relationship ManyToOne {
+	CashReceive{office} to Office
+}
+
+relationship ManyToOne {
+	CashReceive{bank} to Bank
+}
+
+relationship ManyToOne {
+	CashIssue{office} to Office
+}
+
+relationship ManyToOne {
+	CashIssue{bank} to Bank
+}
+    
+entity UserInformation {
+	userId String,
+    userName String,
+    email String,
+    phone String,
+    password String,
+    status Status
+
+}
+
+enum Status {
+    ACTIVE, INACTIVE, CLOSE
+}
+
+relationship ManyToOne {
+	UserInformation{office} to Office
+}
+relationship ManyToOne {
+	Office{company} to Company
+}
+relationship ManyToOne {
+	Branch{bank} to Bank
+}
+
+relationship OneToMany{
+	AtmInformation{office} to Office
+}
+
+relationship OneToMany{
+	Bank{branch} to Branch
+}
+relationship ManyToOne {
+	AtmInformation{location} to Location
+}
+
+relationship ManyToOne {
+	AtmInformation{branch} to Branch
+}
+
+
+// Set pagination options
+paginate Bank, Branch, AtmInformation, UserInformation, Office with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with mySuffix
