@@ -77,6 +77,22 @@ entity CashReceive {
     tip String
 }
 
+entity CashIssue {
+	issueDate Date required,
+    amount BigDecimal required,
+    i100 BigDecimal,
+    i500 BigDecimal,
+    i1000 BigDecimal,
+    tip String,
+    invoiceNumber String,
+    tag String,
+    userId String,
+    remarks String
+}
+
+relationship ManyToOne {
+ CashIssue{office} to Office
+}
 relationship ManyToOne {
  CashReceive{office} to Office
 }
@@ -106,7 +122,7 @@ relationship ManyToOne {
 
 
 // Set pagination options
-paginate Bank, Branch, AtmInformation, UserInformation, Office, CashReceive with pagination
+paginate Bank, Branch, AtmInformation, UserInformation, Office, CashReceive, CashIssue with pagination
 
 dto * with mapstruct
 
