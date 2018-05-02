@@ -1,0 +1,77 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "office",
+            "otherEntityName": "office",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "receiveDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remarks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "invoiceNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tag",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "r100",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "r500",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "r1000",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "recjectedAmount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "f100",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "f500",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "f1000",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "tip",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180502080734",
+    "entityTableName": "cash_receive",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix",
+    "microserviceName": "cashload"
+}
