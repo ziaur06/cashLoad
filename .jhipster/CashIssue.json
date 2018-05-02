@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "office",
+            "otherEntityName": "office",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "issueDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "i100",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "i500",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "i1000",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "tip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "invoiceNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tag",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "remarks",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180502081827",
+    "entityTableName": "cash_issue",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix",
+    "microserviceName": "cashload"
+}
