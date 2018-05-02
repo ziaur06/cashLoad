@@ -89,6 +89,15 @@ entity CashIssue {
     userId String,
     remarks String
 }
+entity CashBalance {
+	balance BigDecimal,
+    n100 BigDecimal,
+    n500 BigDecimal,
+    n1000 BigDecimal
+}
+relationship ManyToOne {
+ CashBalance{office} to Office
+}
 
 relationship ManyToOne {
  CashIssue{office} to Office

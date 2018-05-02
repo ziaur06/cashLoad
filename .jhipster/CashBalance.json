@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "office",
+            "otherEntityName": "office",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "balance",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "n100",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "n500",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "n1000",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "changelogDate": "20180502082028",
+    "entityTableName": "cash_balance",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix",
+    "microserviceName": "cashload"
+}
