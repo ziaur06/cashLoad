@@ -34,21 +34,21 @@ entity AtmInformation {
 
 
 entity Company {
-	name String,
+	name String required,
     address String
 }
 
 entity Office {
-	name String,
+	name String required,
     address String
 }
 
 entity CashReceive {
-	receiveDate LocalDate,
-    amount BigDecimal,
+	receiveDate LocalDate required,
+    amount BigDecimal required,
     userId String,
     remarks String,
-    invoiceNumber String,
+    invoiceNumber String required,
     tag String,
     r100 BigDecimal,
     r500 BigDecimal,
@@ -61,8 +61,8 @@ entity CashReceive {
 }
 
 entity CashIssue {
-	issueDate Date,
-    amount BigDecimal,
+	issueDate Date required,
+    amount BigDecimal required,
     i100 BigDecimal,
     i500 BigDecimal,
     i1000 BigDecimal,
@@ -74,7 +74,7 @@ entity CashIssue {
 }
 
 entity CashBalance {
-	balance BigDecimal,
+	balance BigDecimal required,
     n100 BigDecimal,
     n500 BigDecimal,
     n1000 BigDecimal
@@ -88,6 +88,21 @@ entity CashLoad {
     l1000 BigDecimal,
     tag String
 }
+
+entity UserInformation {
+	userId String,
+    userName String,
+    email String,
+    phone String,
+    password String,
+    status Status
+
+}
+
+enum Status {
+    ACTIVE, INACTIVE, CLOSE
+}
+
 relationship ManyToOne {
 	CashLoad{atm} to AtmInformation
 }
@@ -112,19 +127,6 @@ relationship ManyToOne {
 	CashIssue{bank} to Bank
 }
     
-entity UserInformation {
-	userId String,
-    userName String,
-    email String,
-    phone String,
-    password String,
-    status Status
-
-}
-
-enum Status {
-    ACTIVE, INACTIVE, CLOSE
-}
 
 relationship ManyToOne {
 	UserInformation{office} to Office
@@ -153,7 +155,7 @@ relationship ManyToOne {
 
 
 // Set pagination options
-paginate Bank, Branch, AtmInformation, UserInformation, Office with pagination
+paginate Bank, Branch, AtmInformation, UserInformation, Office, CashIssue, CashReceive, CashLoad with pagination
 
 dto * with mapstruct
 
