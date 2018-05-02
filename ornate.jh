@@ -77,6 +77,30 @@ entity CashReceive {
     tip String
 }
 
+entity CashIssue {
+	issueDate Date required,
+    amount BigDecimal required,
+    i100 BigDecimal,
+    i500 BigDecimal,
+    i1000 BigDecimal,
+    tip String,
+    invoiceNumber String,
+    tag String,
+    userId String,
+    remarks String
+}
+entity CashBalance {
+	balance BigDecimal required,
+    n100 BigDecimal,
+    n500 BigDecimal,
+    n1000 BigDecimal
+}
+relationship ManyToOne {
+ CashBalance{office} to Office
+}
+relationship ManyToOne {
+ CashIssue{office} to Office
+}
 relationship ManyToOne {
  CashReceive{office} to Office
 }
